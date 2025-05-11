@@ -14,7 +14,7 @@ namespace PaginationApp.Services.Parts
 
         // Constructor que recibe las dependencias necesarias
         public ElasticPartSearchService(
-            IElasticSearchService searchService, // ✅ Cambio: usar la interfaz registrada
+            IElasticSearchService searchService, //Cambio: usar la interfaz registrada
             IPartMapper mapper)
         {
             _searchService = searchService;

@@ -1,4 +1,3 @@
-using PaginationApp.Core.Entities;
 using PaginationApp.Core.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
