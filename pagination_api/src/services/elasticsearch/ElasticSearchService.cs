@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace PaginationApp.Services.ElasticSearch
 {
-    // Servicio encargado de construir y ejecutar búsquedas paginadas en Elasticsearch
     public class ElasticSearchService : IElasticSearchService
     {
         private readonly ElasticConnection _connection;
@@ -18,7 +17,7 @@ namespace PaginationApp.Services.ElasticSearch
             _connection = connection;
         }
 
-        // Punto de entrada principal: ejecuta una búsqueda con filtros y paginación
+        // Método principal que ejecuta la búsqueda en Elasticsearch
         public async Task<string> SearchPartsAsync(Dictionary<string, string> filters, int pageNumber, int pageSize)
         {
             ValidatePagination(pageNumber, pageSize);
@@ -45,7 +44,7 @@ namespace PaginationApp.Services.ElasticSearch
                 throw new BadRequestException("Tamaño de página inválido (debe ser 1-300)");
         }
 
-        // Construye dinámicamente los filtros de la búsqueda
+        // Construye las cláusulas de filtro para la consulta
         private List<object> BuildFilterClauses(Dictionary<string, string> filters)
         {
             var mustClauses = new List<object>();
@@ -64,11 +63,12 @@ namespace PaginationApp.Services.ElasticSearch
             return mustClauses;
         }
 
-        // Crea un filtro individual según el tipo (rango, texto, fuzzy)
+        // Construye una cláusula individual según el tipo de filtro
         private object BuildClause(string key, string value)
         {
             return key switch
             {
+                // Filtros de rango para fechas
                 "productiondate_gte" or "productiondate_lte"
                 or "lastmodified_gte" or "lastmodified_lte" => new
                 {
@@ -81,15 +81,28 @@ namespace PaginationApp.Services.ElasticSearch
                     }
                 },
 
+                // Filtros de rango numérico para stock
                 "stockquantity_gte" or "stockquantity_lte" => BuildNumericRangeClause("stockquantity", value, key),
 
+                // Filtros de rango decimal para peso
                 "unitweight_gte" or "unitweight_lte" => BuildDecimalRangeClause("unitweight", value, key),
 
-                "partcode" or "category" => new
+                // Búsqueda exacta para partcode (usa campo keyword)
+                "partcode" => new 
+                {
+                    term = new Dictionary<string, object>
+                    {
+                        ["partcode.keyword"] = value
+                    }
+                },
+
+                // Búsqueda por texto para categoría
+                "category" => new
                 {
                     match = new Dictionary<string, object> { [key] = value }
                 },
 
+                // Búsqueda difusa para especificaciones técnicas
                 "technicalspecs" => new
                 {
                     match = new Dictionary<string, object>
@@ -102,7 +115,7 @@ namespace PaginationApp.Services.ElasticSearch
             };
         }
 
-        // Construye un filtro por rango numérico entero
+        // Construye cláusula de rango para valores enteros
         private object BuildNumericRangeClause(string field, string value, string key)
         {
             if (!int.TryParse(value, out int parsedValue))
@@ -120,7 +133,7 @@ namespace PaginationApp.Services.ElasticSearch
             };
         }
 
-        // Construye un filtro por rango numérico decimal
+        // Construye cláusula de rango para valores decimales
         private object BuildDecimalRangeClause(string field, string value, string key)
         {
             if (!decimal.TryParse(value, out decimal parsedValue))
@@ -138,7 +151,7 @@ namespace PaginationApp.Services.ElasticSearch
             };
         }
 
-        // Construye la estructura final de la consulta con filtros y paginación
+        // Construye la consulta final con paginación
         private object BuildQuery(List<object> mustClauses, int pageNumber, int pageSize)
         {
             return new
