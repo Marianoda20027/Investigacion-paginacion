@@ -29,7 +29,6 @@ builder.Services.AddSingleton<ElasticConnection>(_ =>
 
 builder.Services.AddScoped<IPartMapper, PartMapper>();
 builder.Services.AddScoped<IElasticSearchService, ElasticSearchService>();
-builder.Services.AddScoped<PartService>();
 builder.Services.AddScoped<IPartSearchService, ElasticPartSearchService>();
 builder.Services.AddScoped<LogstashManager>();
 
@@ -44,14 +43,10 @@ app.MapControllers();
 
 await app.RunAsync();
 
-async Task InitializeElasticSearch(WebApplication app)
-{
-    var partService = app.Services.GetRequiredService<PartService>();
-}
+
 
 async Task RunLogstashAsync(WebApplication app)
 {
     var logstashManager = app.Services.GetRequiredService<LogstashManager>();
     await logstashManager.RunLogstashAsync();
 }
-

@@ -1,28 +1,32 @@
 using PaginationApp.Core.Models;
 using System.Text.Json;
-using System.Linq;
 using System.Collections.Generic;
 using System;
 using PaginationApp.Services.Parts.Contracts;
 
 namespace PaginationApp.Services.Parts
 {
-    // Encargado de transformar la respuesta JSON de Elasticsearch en un objeto paginado con PartDto
+    /// <summary>
+    /// Mapeador de respuestas de Elasticsearch a objetos PartDto paginados
+    /// </summary>
     public class PartMapper : IPartMapper
     {
+        /// <summary>
+        /// Convierte la respuesta JSON de Elasticsearch en un resultado paginado
+        /// </summary>
         public PaginatedResult<PartDto> MapToPaginatedResult(string elasticResponse, int pageNumber, int pageSize)
         {
             using var jsonDoc = JsonDocument.Parse(elasticResponse);
             var root = jsonDoc.RootElement;
 
-            // Verifica que exista la propiedad principal 'hits'
+            // Validar estructura básica de la respuesta
             if (!root.TryGetProperty("hits", out var hits))
                 throw new InvalidOperationException("Invalid Elasticsearch response format: missing 'hits' property");
 
+            // Extraer datos principales
             long total = ExtractTotalHits(hits);
             var items = ExtractItems(hits);
 
-            // Construye y retorna el resultado paginado
             return new PaginatedResult<PartDto>
             {
                 Items = items,
@@ -32,7 +36,7 @@ namespace PaginationApp.Services.Parts
             };
         }
 
-        // Extrae el número total de resultados encontrados
+        // Extrae el total de resultados coincidentes
         private long ExtractTotalHits(JsonElement hits)
         {
             if (hits.TryGetProperty("total", out var totalProp) &&
@@ -40,11 +44,10 @@ namespace PaginationApp.Services.Parts
             {
                 return totalValue.GetInt64();
             }
-
             return 0;
         }
 
-        // Convierte cada entrada ('hit') en un PartDto
+        // Convierte los hits de Elasticsearch en objetos PartDto
         private List<PartDto> ExtractItems(JsonElement hits)
         {
             var items = new List<PartDto>();
@@ -57,25 +60,38 @@ namespace PaginationApp.Services.Parts
                 if (!hit.TryGetProperty("_source", out var source))
                     continue;
 
-                var dto = new PartDto
-                {
-                    Id = source.TryGetProperty("id", out var idProp) ? idProp.GetInt32() : 0,
-                    PartCode = source.TryGetProperty("partcode", out var codeProp) ? codeProp.GetString() : null,
-                    Category = source.TryGetProperty("category", out var categoryProp) ? categoryProp.GetString() : null,
-                    StockQuantity = source.TryGetProperty("stockquantity", out var stockProp) ? stockProp.GetInt32() : 0,
-                    UnitWeight = source.TryGetProperty("unitweight", out var weightProp) ? weightProp.GetDecimal() : 0m,
-                    TechnicalSpecs = source.TryGetProperty("technicalspecs", out var specsProp) ? specsProp.GetString() : null,
-                    ProductionDate = ParseDate(source, "productiondate"),
-                    LastModified = ParseDate(source, "lastmodified")
-                };
-
-                items.Add(dto);
+                items.Add(MapSourceToDto(source));
             }
-
             return items;
         }
 
-        // Realiza el parseo seguro de fechas desde una propiedad JSON
+        // Mapea un documento _source de Elasticsearch a PartDto
+        private PartDto MapSourceToDto(JsonElement source)
+        {
+            return new PartDto
+            {
+                Id = GetIntProperty(source, "id"),
+                PartCode = GetStringProperty(source, "partcode"),
+                Category = GetStringProperty(source, "category"),
+                StockQuantity = GetIntProperty(source, "stockquantity"),
+                UnitWeight = GetDecimalProperty(source, "unitweight"),
+                TechnicalSpecs = GetStringProperty(source, "technicalspecs"),
+                ProductionDate = ParseDate(source, "productiondate"),
+                LastModified = ParseDate(source, "lastmodified")
+            };
+        }
+
+        // Métodos auxiliares para extraer propiedades con valores por defecto
+        private int GetIntProperty(JsonElement source, string propertyName, int defaultValue = 0)
+            => source.TryGetProperty(propertyName, out var prop) ? prop.GetInt32() : defaultValue;
+
+        private string? GetStringProperty(JsonElement source, string propertyName)
+            => source.TryGetProperty(propertyName, out var prop) ? prop.GetString() : null;
+
+        private decimal GetDecimalProperty(JsonElement source, string propertyName, decimal defaultValue = 0m)
+            => source.TryGetProperty(propertyName, out var prop) ? prop.GetDecimal() : defaultValue;
+
+        // Parseo seguro de fechas
         private DateTime? ParseDate(JsonElement source, string propertyName)
         {
             if (source.TryGetProperty(propertyName, out var dateProp) &&
@@ -83,7 +99,6 @@ namespace PaginationApp.Services.Parts
             {
                 return parsedDate;
             }
-
             return null;
         }
     }
