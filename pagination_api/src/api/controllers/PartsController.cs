@@ -29,7 +29,7 @@ namespace PaginationApp.Api.Controllers
             [FromQuery] int pageNumber = 1,
             [FromQuery] int pageSize = 10,
             [FromQuery] string? category = null,
-            [FromQuery] string? partcode = null,
+            [FromQuery] string? partCode = null,
             [FromQuery] string? technicalSpecs = null,
             [FromQuery] int? minStockQuantity = null,
             [FromQuery] int? maxStockQuantity = null,
@@ -61,9 +61,9 @@ namespace PaginationApp.Api.Controllers
                 if (!string.IsNullOrEmpty(category))
                     filters.Add("category", category.ToLower());
                 
-                if (!string.IsNullOrEmpty(partcode))
+                if (!string.IsNullOrEmpty(partCode))
                 {
-                    var cleanPartCode = partcode.Trim().ToUpper();
+                    var cleanPartCode = partCode.Trim().ToUpper();
                     filters.Add("partcode", cleanPartCode);
                 }
                 
