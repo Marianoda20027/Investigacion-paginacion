@@ -13,8 +13,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+var elasticUrl = Environment.GetEnvironmentVariable("ELASTICSEARCH_URL");
+var elasticUsername = Environment.GetEnvironmentVariable("ELASTICSEARCH_USERNAME");
+var elasticPassword = Environment.GetEnvironmentVariable("ELASTICSEARCH_PASSWORD");
+
+if (string.IsNullOrWhiteSpace(elasticUrl))
+    throw new ConfigurationException("ELASTICSEARCH_URL no está configurado");
+if (string.IsNullOrWhiteSpace(elasticUsername))
+    throw new ConfigurationException("ELASTICSEARCH_USERNAME no está configurado");
+if (string.IsNullOrWhiteSpace(elasticPassword))
+    throw new ConfigurationException("ELASTICSEARCH_PASSWORD no está configurado");
+
 builder.Services.AddSingleton<ElasticConnection>(_ => 
-    new ElasticConnection());
+    new ElasticConnection(elasticUrl, elasticUsername, elasticPassword));
 
 builder.Services.AddScoped<IPartMapper, PartMapper>();
 builder.Services.AddScoped<IElasticSearchService, ElasticSearchService>();
@@ -39,4 +50,3 @@ async Task RunLogstashAsync(WebApplication app)
     var logstashManager = app.Services.GetRequiredService<LogstashManager>();
     await logstashManager.RunLogstashAsync();
 }
-
