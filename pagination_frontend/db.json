@@ -1,0 +1,275 @@
+{
+    "parts": [
+      {
+        "id": 301,
+        "productionDate": "2024-01-20",
+        "lastModified": "2024-04-10T09:45:00",
+        "stockQuantity": 25,
+        "unitWeight": 320.5,
+        "partCode": "AV-5001",
+        "category": "Aviation"
+      },
+      {
+        "id": 302,
+        "productionDate": "2024-03-05",
+        "lastModified": "2024-05-15T11:20:00",
+        "stockQuantity": 18,
+        "unitWeight": 750.0,
+        "partCode": "AV-5002",
+        "category": "Aviation"
+      },
+      {
+        "id": 303,
+        "productionDate": "2024-02-10",
+        "lastModified": "2024-04-12T14:30:00",
+        "stockQuantity": 9,
+        "unitWeight": 400.0,
+        "partCode": "AV-5003",
+        "category": "Aviation"
+      },
+      {
+        "id": 304,
+        "productionDate": "2024-01-15",
+        "lastModified": "2024-04-18T12:00:00",
+        "stockQuantity": 7,
+        "unitWeight": 350.0,
+        "partCode": "AV-5004",
+        "category": "Aviation"
+      },
+      {
+        "id": 305,
+        "productionDate": "2024-04-22",
+        "lastModified": "2024-04-23T10:15:00",
+        "stockQuantity": 12,
+        "unitWeight": 800.0,
+        "partCode": "AV-5005",
+        "category": "Aviation"
+      },
+      {
+        "id": 306,
+        "productionDate": "2024-02-17",
+        "lastModified": "2024-03-01T09:00:00",
+        "stockQuantity": 5,
+        "unitWeight": 290.0,
+        "partCode": "AV-5006",
+        "category": "Aviation"
+      },
+      {
+        "id": 307,
+        "productionDate": "2024-03-12",
+        "lastModified": "2024-03-20T14:50:00",
+        "stockQuantity": 0,
+        "unitWeight": 610.0,
+        "partCode": "AV-5007",
+        "category": "Aviation"
+      },
+      {
+        "id": 308,
+        "productionDate": "2024-01-25",
+        "lastModified": "2024-02-25T11:30:00",
+        "stockQuantity": 3,
+        "unitWeight": 425.0,
+        "partCode": "AV-5008",
+        "category": "Aviation"
+      },
+      {
+        "id": 309,
+        "productionDate": "2024-05-10",
+        "lastModified": "2024-05-11T15:00:00",
+        "stockQuantity": 27,
+        "unitWeight": 705.0,
+        "partCode": "AV-5009",
+        "category": "Aviation"
+      },
+      {
+        "id": 310,
+        "productionDate": "2024-04-01",
+        "lastModified": "2024-04-05T09:20:00",
+        "stockQuantity": 11,
+        "unitWeight": 385.0,
+        "partCode": "AV-5010",
+        "category": "Aviation"
+      },
+      {
+        "id": 311,
+        "productionDate": "2024-01-20",
+        "lastModified": "2024-01-25T08:00:00",
+        "stockQuantity": 1,
+        "unitWeight": 315.0,
+        "partCode": "AV-5011",
+        "category": "Aviation"
+      },
+      {
+        "id": 312,
+        "productionDate": "2024-02-05",
+        "lastModified": "2024-03-10T17:30:00",
+        "stockQuantity": 4,
+        "unitWeight": 720.0,
+        "partCode": "AV-5012",
+        "category": "Aviation"
+      },
+      {
+        "id": 313,
+        "productionDate": "2024-03-18",
+        "lastModified": "2024-04-22T16:10:00",
+        "stockQuantity": 13,
+        "unitWeight": 600.0,
+        "partCode": "AV-5013",
+        "category": "Aviation"
+      },
+      {
+        "id": 314,
+        "productionDate": "2024-04-14",
+        "lastModified": "2024-04-15T13:00:00",
+        "stockQuantity": 22,
+        "unitWeight": 500.0,
+        "partCode": "AV-5014",
+        "category": "Aviation"
+      },
+      {
+        "id": 315,
+        "productionDate": "2024-02-27",
+        "lastModified": "2024-03-01T12:00:00",
+        "stockQuantity": 6,
+        "unitWeight": 460.0,
+        "partCode": "AV-5015",
+        "category": "Aviation"
+      },
+      {
+        "id": 316,
+        "productionDate": "2024-03-01",
+        "lastModified": "2024-03-03T09:00:00",
+        "stockQuantity": 8,
+        "unitWeight": 310.0,
+        "partCode": "AV-5016",
+        "category": "Aviation"
+      },
+      {
+        "id": 317,
+        "productionDate": "2024-01-10",
+        "lastModified": "2024-01-12T14:00:00",
+        "stockQuantity": 10,
+        "unitWeight": 495.0,
+        "partCode": "AV-5017",
+        "category": "Aviation"
+      },
+      {
+        "id": 318,
+        "productionDate": "2024-03-22",
+        "lastModified": "2024-03-23T16:30:00",
+        "stockQuantity": 30,
+        "unitWeight": 810.0,
+        "partCode": "AV-5018",
+        "category": "Aviation"
+      },
+      {
+        "id": 319,
+        "productionDate": "2024-05-01",
+        "lastModified": "2024-05-03T13:20:00",
+        "stockQuantity": 20,
+        "unitWeight": 385.0,
+        "partCode": "AV-5019",
+        "category": "Aviation"
+      },
+      {
+        "id": 320,
+        "productionDate": "2024-04-05",
+        "lastModified": "2024-04-07T10:10:00",
+        "stockQuantity": 14,
+        "unitWeight": 375.0,
+        "partCode": "AV-5020",
+        "category": "Aviation"
+      },
+      {
+        "id": 321,
+        "productionDate": "2024-01-05",
+        "lastModified": "2024-01-10T11:11:00",
+        "stockQuantity": 2,
+        "unitWeight": 600.0,
+        "partCode": "AV-5021",
+        "category": "Aviation"
+      },
+      {
+        "id": 322,
+        "productionDate": "2024-03-29",
+        "lastModified": "2024-04-02T12:12:00",
+        "stockQuantity": 16,
+        "unitWeight": 720.0,
+        "partCode": "AV-5022",
+        "category": "Aviation"
+      },
+      {
+        "id": 323,
+        "productionDate": "2024-02-11",
+        "lastModified": "2024-02-14T14:14:00",
+        "stockQuantity": 0,
+        "unitWeight": 420.0,
+        "partCode": "AV-5023",
+        "category": "Aviation"
+      },
+      {
+        "id": 324,
+        "productionDate": "2024-04-08",
+        "lastModified": "2024-04-09T15:15:00",
+        "stockQuantity": 17,
+        "unitWeight": 690.0,
+        "partCode": "AV-5024",
+        "category": "Aviation"
+      },
+      {
+        "id": 325,
+        "productionDate": "2024-02-28",
+        "lastModified": "2024-03-01T16:16:00",
+        "stockQuantity": 19,
+        "unitWeight": 560.0,
+        "partCode": "AV-5025",
+        "category": "Aviation"
+      },
+      {
+        "id": 326,
+        "productionDate": "2024-03-17",
+        "lastModified": "2024-03-18T17:17:00",
+        "stockQuantity": 21,
+        "unitWeight": 675.0,
+        "partCode": "AV-5026",
+        "category": "Aviation"
+      },
+      {
+        "id": 327,
+        "productionDate": "2024-01-28",
+        "lastModified": "2024-02-01T18:18:00",
+        "stockQuantity": 23,
+        "unitWeight": 710.0,
+        "partCode": "AV-5027",
+        "category": "Aviation"
+      },
+      {
+        "id": 328,
+        "productionDate": "2024-05-02",
+        "lastModified": "2024-05-04T19:19:00",
+        "stockQuantity": 26,
+        "unitWeight": 485.0,
+        "partCode": "AV-5028",
+        "category": "Aviation"
+      },
+      {
+        "id": 329,
+        "productionDate": "2024-01-14",
+        "lastModified": "2024-01-16T20:20:00",
+        "stockQuantity": 24,
+        "unitWeight": 530.0,
+        "partCode": "AV-5029",
+        "category": "Aviation"
+      },
+      {
+        "id": 330,
+        "productionDate": "2024-03-09",
+        "lastModified": "2024-03-11T21:21:00",
+        "stockQuantity": 15,
+        "unitWeight": 580.0,
+        "partCode": "AV-5030",
+        "category": "Aviation"
+      }
+    ]
+  }
+  

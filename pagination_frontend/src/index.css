@@ -1,0 +1,96 @@
+/* index.css */
+
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    background-color: #f5f7fa;
+    color: #1f1f1f;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #2b2b2b;
+  }
+  
+  .parts-table-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+  
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .filters label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+    color: #555;
+  }
+  
+  .filters input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+  
+  .filters input:focus {
+    border-color: #4096ff;
+    outline: none;
+  }
+  
+  .parts-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .parts-table thead {
+    background-color: #fafafa;
+  }
+  
+  .parts-table th,
+  .parts-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eaeaea;
+    text-align: left;
+  }
+  
+  .parts-table th {
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .parts-table tbody tr:hover {
+    background-color: #f0f5ff;
+  }
+  
+  button {
+    background-color: #1677ff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+  }
+  
+  button:hover {
+    background-color: #165dff;
+  }
+  

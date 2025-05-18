@@ -1,0 +1,39 @@
+.parts-table-container {
+    padding: 1rem;
+  }
+  
+  .filters {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .filters label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .parts-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .parts-table th,
+  .parts-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .parts-table th {
+    background-color: #f3f3f3;
+  }
+  
+  .pagination {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
